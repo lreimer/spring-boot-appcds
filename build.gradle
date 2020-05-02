@@ -29,6 +29,14 @@ dependencies {
 
 test {
   useJUnitPlatform()
+
+  // we use this to create the AppCDS archive later
+  jvmArgs '-XX:DumpLoadedClassList=build/classes.lst'
+}
+
+bootRun {
+  // we use this to create the AppCDS archive later
+  jvmArgs = ["-XX:DumpLoadedClassList=build/classes.lst"]
 }
 
 task kick(dependsOn: clean) {}
